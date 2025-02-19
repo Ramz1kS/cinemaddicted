@@ -1,0 +1,16 @@
+.actorsListContainer {
+  margin-bottom: 30px;
+}
+
+.sectionName {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.actorsList {
+  width: 100%;
+  white-space: nowrap;
+  gap: 30px;
+  overflow-x: auto;
+}

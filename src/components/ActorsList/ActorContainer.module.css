@@ -1,0 +1,22 @@
+.actorImage {
+  width: 200px;
+  height: 275px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.actorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  color: #AFAFAF
+}
+
+.anotherContainerOhMyGod {
+  display: inline-block;
+  margin-right: 20px;
+}

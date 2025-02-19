@@ -1,0 +1,56 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.loginMainDiv {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(22, 22, 22);
+}
+
+.loginMainDiv * {
+  animation: fadeIn 0.5s ease;
+}
+
+.infoContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.bottomLink {
+  position: absolute;
+  bottom: 5%;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.nextButton {
+  margin-top: 20px;
+  cursor: pointer;
+  align-self: center;
+  border-bottom: 1px solid white
+}
+
+.goBackButton {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  animation: none;
+}

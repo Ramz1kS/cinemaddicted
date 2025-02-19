@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+  color: white;
+  font-family: "Albert Sans", serif;
+  /* ох как зря */
+  overflow-x: hidden;
+  scrollbar-color: rgb(76, 76, 76) rgb(30, 30, 30);
+  scrollbar-width: thin;
+}
+
+body {
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+}
+
+h1 {
+  font-size: 96px;
+}
+
+h2 {
+  font-size: 64px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
