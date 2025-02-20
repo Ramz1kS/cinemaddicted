@@ -14,3 +14,15 @@
   transform: translateY(50%) translateX(-50%);
   font-weight: 500;
 }
+
+.buttons {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transform: translateY(50%);
+  bottom: 55%;
+  align-items: center;
+  gap: 25px;
+}

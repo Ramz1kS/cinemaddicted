@@ -1,0 +1,37 @@
+.pageCanvas {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(22, 22, 22);
+}
+
+.goBackButton {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  animation: none;
+}
+
+.question {
+  color: rgb(255, 242, 121)
+}
+
+.blueText {
+  color: rgb(45, 217, 255)
+}
+
+.linkToAuth {
+  margin-top: 10px;
+  border-bottom: 1px rgb(10, 167, 240) solid;
+  color: rgb(10, 167, 240);
+  cursor: pointer;
+}
+
+.errorMsg {
+  color: rgb(255, 51, 51);
+  margin-top: 20px;
+}

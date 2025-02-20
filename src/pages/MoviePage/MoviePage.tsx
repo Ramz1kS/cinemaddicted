@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './MoviePage.module.css'
-import TestBackgroundImage from '../../assets/images/test/moviepageback.png'
-import MoviePoster from '../../assets/images/test/movieposter.png'
 import UpperMoviePage from './UpperMoviePage'
 import LowerMoviePage from './LowerMoviePage'
 import NavTabLeft from '../../components/NavTabLeft/NavTabLeft'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 const MoviePage = () => {
   return (
