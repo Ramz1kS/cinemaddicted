@@ -1,18 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import classes from './MoviePage.module.css'
 import UpperMoviePage from './UpperMoviePage'
-import LowerMoviePage from './LowerMoviePage'
+import ExtraMovieInfo from './ExtraMovieInfo'
 import NavTabLeft from '../../components/NavTabLeft/NavTabLeft'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import LoadingPage from '../LoadingPage/LoadingPage'
+import ErrorPage from '../ErrorPage/ErrorPage'
+import { useServer } from '../../hooks/useServer'
+import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
+import { Film, FilmsArrayData } from '../../../types'
+import { getRandomInRange } from '../../hooks/useRandom'
 
 const MoviePage = () => {
+  const { isLoading, isError, data, useData } = useServer<Film>()
+  const sessionid = useContext(authContext).sessionId
+  const { movieId } = useParams()
+  useEffect(() => {
+    useData(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits,videos,images`, 'GET', {})
+  }, [])
+  const getBackgroundImage = () => {
+    if (!data)
+      return ''
+    if (data?.images.backdrops.length == 0)
+      return ''
+    const possibleBackgrounds = data?.images.backdrops.filter((item, _) => item.iso_639_1 == null)
+    if (!possibleBackgrounds)
+      return ''
+    if (possibleBackgrounds.length == 0)
+      return ''
+    return possibleBackgrounds[getRandomInRange(0, possibleBackgrounds.length)].file_path
+  }
+  if (isLoading && !isError) {
+    return (<LoadingPage isPage={true}></LoadingPage>)
+  } else if (isError) {
+    return (<ErrorPage isPage={true}></ErrorPage>)
+  } 
+  if (!data)
+    return
   return (
-    <>
-      <UpperMoviePage></UpperMoviePage>
-      <LowerMoviePage></LowerMoviePage>
+    <div className={classes.pageCanvas}>
+      <UpperMoviePage 
+      backgroundImage={getBackgroundImage()}
+      runtime={data.runtime}
+      movieName={data.title}
+      directors={data.credits.crew.filter((item) => item.job == "Director") ?? []}
+      posterLink={data.poster_path}
+      countries={data.production_countries}
+      companies={data.production_companies}
+      releaseDate={data.release_date}></UpperMoviePage>
+      <ExtraMovieInfo
+      images={data.images}
+      cast={data.credits.cast}
+      description={data.overview}></ExtraMovieInfo>
       <NavTabLeft></NavTabLeft>
-    </>
+    </div>
   )
 }
 

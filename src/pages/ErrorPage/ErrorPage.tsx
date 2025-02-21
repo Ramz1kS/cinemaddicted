@@ -10,7 +10,7 @@ interface ErrorPageProps {
 const ErrorPage: FC<ErrorPageProps> = ({isPage}) => {
   return (
     <div className={classes.pageCanvas}
-    style={{height: isPage ? "100vh" : "100%"}}>
+    style={{height: isPage ? "100vh" : "auto"}}>
       <motion.h3 className={classes.errorMsg}>
         Unfortunately, we could not load the data :c</motion.h3>
       { isPage ? <Link to={'/list/'}><p>go back</p></Link> : null}

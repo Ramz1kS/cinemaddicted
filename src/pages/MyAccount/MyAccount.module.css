@@ -1,6 +1,7 @@
 .pageCanvas {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 65px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,18 +31,7 @@
   align-items: center;
 }
 
-.buttonsContainer {
-  margin-top: 40px;
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  overflow-y:visible;
-  overflow-x: visible;
-}
-
-.button {
-  font-weight: 500;
-  cursor: pointer;
+.marginDiv {
+  margin-top: 30px;
+  margin-bottom: 40px;
 }

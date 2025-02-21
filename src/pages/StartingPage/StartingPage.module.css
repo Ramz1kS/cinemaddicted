@@ -23,3 +23,8 @@
   border-bottom: 2px white solid;
 }
 
+.tmdbLogo {
+  position: absolute;
+  bottom: 60px;
+  width: 150px;
+}

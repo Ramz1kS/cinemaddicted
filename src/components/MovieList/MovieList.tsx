@@ -7,65 +7,66 @@ const MovieList = () => {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   },
   {
     name: "Snatch",
     rating: 10,
     categories: ['comedy', 'crime'],
-    year: 2000
+    year: '2000'
   }]
   return (
     <div className={classes.container}>
       {movies.map((item, index) => <MovieLink 
+      imageLink={''}
       key={index} 
       name={item.name}
       rating={item.rating}

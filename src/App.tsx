@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<StartingPage></StartingPage>}></Route>
         <Route path='/list/' element={<MoviesListPage></MoviesListPage>}></Route>
-        <Route path='/movie/' element={<MoviePage></MoviePage>}></Route>
+        <Route path='/movie/:movieId' element={<MoviePage></MoviePage>}></Route>
         <Route path='/gototmdb/' element={<SuggestTMDBPage></SuggestTMDBPage>}></Route>
         <Route path='/successtmdb/' element={<SuccessfulTMDBPage></SuccessfulTMDBPage>}></Route>
         <Route path='/account/' element={<MyAccount></MyAccount>}></Route>

@@ -9,7 +9,7 @@ interface LoadingPageProps {
 const LoadingPage: React.FC<LoadingPageProps> = ({isPage}) => {
   return (
     <div className={classes.pageCanvas}
-    style={{height: isPage ? "100vh" : "100%"}}>
+    style={{height: isPage ? "100vh" : "auto"}}>
       <motion.h3
       initial={{opacity: 0}}
       animate={{opacity: 1}}

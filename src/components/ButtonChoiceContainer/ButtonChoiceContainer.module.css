@@ -1,0 +1,11 @@
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.button {
+  font-weight: 300;
+  cursor: pointer;
+}

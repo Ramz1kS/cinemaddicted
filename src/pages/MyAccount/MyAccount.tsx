@@ -10,6 +10,8 @@ import LoadingPage from '../LoadingPage/LoadingPage'
 import ErrorPage from '../ErrorPage/ErrorPage'
 import NavTabUpper from '../../components/NavTabUpper/NavTabUpper'
 import MovieDescription from '../../components/MovieDescription/MovieDescription'
+import FavoritesPage from '../FavoritesPage/FavoritesPage'
+import ButtonChoiceContainer from '../../components/ButtonChoiceContainer/ButtonChoiceContainer'
 
 const MyAccount = () => {
   // Переменные под получение данных
@@ -33,7 +35,7 @@ const MyAccount = () => {
   const selectionHandler = () => {
     switch (currSelection) {
       case "favorites":
-        return (<div>broski</div>)
+        return (<FavoritesPage userId={data?.id}></FavoritesPage>)
       default:
         return (<div>brobrobroskiii</div>)
     }
@@ -56,15 +58,11 @@ const MyAccount = () => {
         <h3 className={classes.username}>{data?.username}</h3>
         <p className={classes.name}>name: {data?.name != '' ? data?.name : 'unknown'}</p>
       </div>
-      <div className={classes.buttonsContainer}>
-        {selectionVariants.map((item, index) => 
-          <motion.p 
-          initial={{scale: 1}}
-          animate={{scale: currSelection == item ? 1.1 : 1}}
-          key={index}
-          style={{borderBottom: currSelection == item ? "1px solid white" : "none"}}
-          onClick={() => setCurrSelection(item)}
-          className={classes.button}>{item}</motion.p>)}
+      <div className={classes.marginDiv}>
+        <ButtonChoiceContainer
+        setVariant={setCurrSelection}
+        variants={selectionVariants}
+        currVariant={currSelection}></ButtonChoiceContainer>
       </div>
       { selectionHandler() }
     </div>
