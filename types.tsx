@@ -28,6 +28,7 @@ export interface AccountMainData {
 }
 
 // Объекты для информации по фильму
+// Участвующие в съемке фильма
 export interface CastMember {
   name: string;
   profile_path: string;
@@ -57,6 +58,7 @@ export interface productionCountry {
   name: string;
 }
 
+// Изображения
 export interface ImageTMDB {
   file_path: string,
   iso_639_1: string
@@ -67,6 +69,31 @@ export interface Images {
   posters: ImageTMDB[];
 }
 
+// Обзоры
+export interface ReviewAuthor {
+  name: string;
+  username: string;
+  avatar_path: string;
+  rating: string;
+}
+
+export interface Review {
+  author: string;
+  author_details: ReviewAuthor;
+  content: string;
+  created_at: string;
+  id: string;
+  url: string;
+}
+
+export interface ReviewData {
+  page: number;
+  results: Review[];
+  total_pages: number;
+  total_results: number;
+}
+
+// Кинч
 export interface Film {
   adult: boolean;
   backdrop_path: string;
@@ -75,7 +102,6 @@ export interface Film {
   title: string;
   release_date: string;
   poster_path: string;
-  // original_language: string;
   vote_average: number;
   vote_count: number;
   credits: Credits;
@@ -83,7 +109,9 @@ export interface Film {
   production_countries: productionCountry[];
   production_companies: productionCompany[];
   runtime: number;
-  images: Images
+  images: Images;
+  reviews: ReviewData;
+  similar: FilmsArrayData;
 }
 
 // Объекты для фильмов, связанных с пользователем

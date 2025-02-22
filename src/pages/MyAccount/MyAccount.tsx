@@ -21,7 +21,6 @@ const MyAccount = () => {
   const navigate = useNavigate()
   useEffect(() => {
     validateSession()
-    console.log(sessionId)
     if (sessionId == 'none')
       navigate('/gototmdb/')
     useData('https://api.themoviedb.org/3/account', "GET", {
@@ -51,7 +50,6 @@ const MyAccount = () => {
       <NavTabUpper name='my account'>
         <LogOutButton></LogOutButton>
       </NavTabUpper>
-      <h3>If you see this, it means that you are logged in! Hooray!</h3>
       <div className={classes.basicInfoPage}>
         <img className={classes.avatar}
         src={`https://media.themoviedb.org/t/p/w300_and_h300_face/${data?.avatar.tmdb.avatar_path}`}></img>

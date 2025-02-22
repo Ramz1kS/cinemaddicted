@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import classes from './MoviePage.module.css'
 import UpperMoviePage from './UpperMoviePage'
-import ExtraMovieInfo from './ExtraMovieInfo'
+import ExtraMovieInfo from '../../components/ExtraMovieInfo/ExtraMovieInfo'
 import NavTabLeft from '../../components/NavTabLeft/NavTabLeft'
 import { useParams } from 'react-router-dom'
 import LoadingPage from '../LoadingPage/LoadingPage'
@@ -10,14 +10,16 @@ import { useServer } from '../../hooks/useServer'
 import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
 import { Film, FilmsArrayData } from '../../../types'
 import { getRandomInRange } from '../../hooks/useRandom'
+import ReviewsList from '../../components/Reviews/ReviewsList'
+import SimilarMovies from '../../components/SimilarMovies/SimilarMovies'
 
 const MoviePage = () => {
   const { isLoading, isError, data, useData } = useServer<Film>()
   const sessionid = useContext(authContext).sessionId
   const { movieId } = useParams()
   useEffect(() => {
-    useData(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits,videos,images`, 'GET', {})
-  }, [])
+    useData(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits,videos,images,reviews,similar`, 'GET', {})
+  }, [movieId])
   const getBackgroundImage = () => {
     if (!data)
       return ''
@@ -38,8 +40,10 @@ const MoviePage = () => {
   if (!data)
     return
   return (
-    <div className={classes.pageCanvas}>
+    <div className={classes.pageCanvas} key={movieId}>
       <UpperMoviePage 
+      rating={data.vote_average}
+      voteCount={data.vote_count}
       backgroundImage={getBackgroundImage()}
       runtime={data.runtime}
       movieName={data.title}
@@ -52,6 +56,8 @@ const MoviePage = () => {
       images={data.images}
       cast={data.credits.cast}
       description={data.overview}></ExtraMovieInfo>
+      <ReviewsList reviews={data.reviews}></ReviewsList>
+      <SimilarMovies moviesList={data.similar.results}></SimilarMovies>
       <NavTabLeft></NavTabLeft>
     </div>
   )

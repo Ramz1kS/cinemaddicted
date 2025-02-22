@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import classes from './ImagesList.module.css'
 import ImageClickable from '../ImageClickable/ImageClickable';
 import { ImageTMDB } from '../../../types';
+import ViewAllButton from '../MediaContainer/ViewAllButton';
 
 interface ImagesListProps {
   imagesLinks: ImageTMDB[];
@@ -15,7 +16,7 @@ const ImagesList: FC<ImagesListProps> = ({imagesLinks, maxCount, isPoster}) => {
     if (imagesLinks.length == 0) {
       return <p>There are no images in this category</p> 
     }
-    if (!maxCount || imagesLinks.length < maxCount) {
+    if (!maxCount || imagesLinks.length <= maxCount) {
       return imagesLinks.map((item, index) => 
       <ImageClickable isPoster={isPoster}  key={index}
       imageLink={imgLink + item.file_path}
@@ -30,6 +31,7 @@ const ImagesList: FC<ImagesListProps> = ({imagesLinks, maxCount, isPoster}) => {
   return (
     <>
       {spawnImageLinks()}
+      {maxCount && imagesLinks.length > maxCount ? <ViewAllButton images={imagesLinks} isPoster={isPoster}></ViewAllButton> : null }
     </>
   )
 }

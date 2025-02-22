@@ -38,7 +38,7 @@ const FavoritesPage: FC<FavoritesPageProps> = ({userId}) => {
       name={item.title}
       key={item.id}
       rating={item.vote_average}
-      categories={['sex', 'bbb']}
+      categories={['idk', 'idk']}
       year={item.release_date}></MovieLink>) }
     </div>
   )

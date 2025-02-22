@@ -13,10 +13,12 @@
 }
 
 .imageContainer {
+  display: flex;
+  gap: 10px;
   white-space: nowrap;
   overflow-x: auto;
   height: auto;
   padding: 10px;
-  padding-left: 25px;
   border: 1px solid white;
 }
+

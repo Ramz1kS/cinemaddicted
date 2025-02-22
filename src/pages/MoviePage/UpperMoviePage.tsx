@@ -4,6 +4,7 @@ import classes from './UpperMoviePage.module.css'
 import TestBackgroundImage from '../../assets/images/test/moviepageback.png'
 import MoviePoster from '../../assets/images/test/movieposter.png'
 import { CrewMember, productionCompany, productionCountry } from '../../../types'
+import RatingNumber from '../../components/RatingNumber/RatingNumber'
 
 interface UpperMoviePageProps {
   movieName: string;
@@ -13,7 +14,9 @@ interface UpperMoviePageProps {
   releaseDate: string;
   runtime: number;
   directors: CrewMember[];
-  backgroundImage: string
+  backgroundImage: string;
+  rating: number;
+  voteCount: number;
 }
 
 const UpperMoviePage: FC<UpperMoviePageProps> = (
@@ -24,6 +27,8 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
   countries,
   directors,
   backgroundImage,
+  rating,
+  voteCount,
   companies}) => {
   return (
     <div className={classes.upperFancyPage}>
@@ -56,10 +61,11 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           transition={{delay: 0.4, duration: 0.4}}>
+            <h4 className={classes.genre}>rated <RatingNumber number={rating}></RatingNumber> ({voteCount})</h4>
             <h4 className={classes.genre}>comedy, crime</h4>
             <h4 className={classes.generalInfo}>directed by {directors.map((item, index) => <span key={index}>{item.name + (index != directors.length - 1? ', ' : '')}</span>)}</h4>
-            <h4 className={classes.generalInfo}>produced by {companies.map((item, index) => <span key={index}>{item.name}</span>)}</h4>
-            <h4 className={classes.generalInfo}>filmed in {countries.map((item, index) => <span key={index}>{item.name}</span>)}</h4>
+            <h4 className={classes.generalInfo}>produced by {companies.map((item, index) => <span key={index}>{item.name + (index != companies.length - 1? ', ' : '')}</span>)}</h4>
+            <h4 className={classes.generalInfo}>filmed in {countries.map((item, index) => <span key={index}>{item.name + (index != countries.length - 1? ', ' : '')}</span>)}</h4>
             <h4 className={classes.generalInfo}>{runtime} minutes long</h4>
             <h4 className={classes.generalInfo}>released in {releaseDate}</h4>
           </motion.div>

@@ -1,0 +1,10 @@
+.container {
+  cursor: pointer;
+  background-color: rgb(17, 17, 17);
+  height: 300px;
+  width: 300px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

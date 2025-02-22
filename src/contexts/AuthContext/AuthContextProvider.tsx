@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import React, { createContext, FC, useState } from 'react'
 import { useServer } from '../../hooks/useServer';
 
@@ -52,7 +52,11 @@ const AuthContextProvider: FC<AuthContextProviderProps> = ({children}) => {
         console.log('Session ID is valid')
       }
     } 
-    catch (e) {
+    catch (e: AxiosError | any) {
+      if (e.code == "ERR_NETWORK") {
+        console.error("Cannot connect to server, no need in removing session id!")
+        return
+      }
       console.error('Session ID is invalid, removing it...', e)
       localStorage.removeItem('tmdb_session_id')
       setSessionId('none')

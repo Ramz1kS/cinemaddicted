@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import classes from './ImageClickable.module.css'
 import { motion } from 'motion/react';
 
@@ -10,9 +10,6 @@ interface ImageClickableProps {
 
 const ImageClickable: FC<ImageClickableProps> = ({imageLink, externalLink, isPoster}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
-  useEffect(() => {
-    console.log(imageLink)
-  }, [])
   return (
     <a href={externalLink} 
     target='_blank'
