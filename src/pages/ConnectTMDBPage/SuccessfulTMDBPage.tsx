@@ -14,11 +14,11 @@ const SuccessfulTMDBPage = () => {
   const login = useContext(authContext).login
   const requestToken = localStorage.tmdb_request_code
   useEffect(() => {
+    if (requestToken == 'none' || !requestToken) 
+      navigate('/gototmdb/')
     console.log(sessionId)
     if (sessionId != 'none')
       navigate('/account/')
-  }, [])
-  useEffect(() => {
     useData('https://api.themoviedb.org/3/authentication/session/new', "POST", {
       request_token: requestToken
     })
@@ -39,7 +39,8 @@ const SuccessfulTMDBPage = () => {
       <>
         <h3 className={classes.yay}>Success!</h3>
         <p>Thank you! You're logged in!</p>
-        <Link to='/list/' className={classes.link}><p className={classes.clickMe}>discover new films</p></Link>
+        <p>ok so i dont have a functioning list page rn so you gotta type /movie/ and then movie id idk man just type some random stuff that will work</p>
+        <Link to='/account/' className={classes.link}><p className={classes.clickMe}>go to account</p></Link>
       </> }
     </motion.div>
   )

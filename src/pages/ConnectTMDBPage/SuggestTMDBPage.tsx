@@ -85,6 +85,7 @@ const SuggestTMDBPage = () => {
       animate={{y: 0, opacity: 1}}
       className={classes.question}>Want use all the features?</motion.h2>
       <motion.div
+      className={classes.anotherContainer}
       initial={{y: 50, opacity: 0}}
       animate={{y: 0, opacity: 1}}
       transition={{delay: 0.2}}>

@@ -35,3 +35,10 @@
   color: rgb(255, 51, 51);
   margin-top: 20px;
 }
+
+.anotherContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
