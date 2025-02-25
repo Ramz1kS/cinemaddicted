@@ -17,3 +17,7 @@
   gap: 30px;
   overflow-x: auto;
 }
+
+.greyText {
+  color: rgb(185, 185, 185)
+}

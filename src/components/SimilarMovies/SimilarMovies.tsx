@@ -11,7 +11,10 @@ const SimilarMovies: FC<SimilarMoviesProps> = ({moviesList}) => {
   return (
     <div className={classes.moviesListContainer}>
       <h1 className={classes.sectionName}>SIMILAR</h1>
-      <div className={classes.moviesList}>
+      { moviesList.length == 0 ? 
+        <p className={classes.greyText}>Seems like there are no similar movies here...</p>
+      :
+        <div className={classes.moviesList}>
         {moviesList.slice(0, 10).map((item) => <MovieLink 
         key={item.id} 
         name={item.title}
@@ -20,7 +23,7 @@ const SimilarMovies: FC<SimilarMoviesProps> = ({moviesList}) => {
         categories={["idk", "idk"]}
         movieId={item.id}
         imageLink={item.poster_path}></MovieLink>)}
-      </div>
+      </div>}
     </div>
   )
 }

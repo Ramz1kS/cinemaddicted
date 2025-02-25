@@ -18,7 +18,10 @@ const MoviePage = () => {
   const sessionid = useContext(authContext).sessionId
   const { movieId } = useParams()
   useEffect(() => {
-    useData(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits,videos,images,reviews,similar`, 'GET', {})
+    useData(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits,videos,images,reviews,similar,account_states`, 'GET', {
+      session_id: sessionid,
+      'accept': 'application/json'
+    })
   }, [movieId])
   const getBackgroundImage = () => {
     if (!data)
@@ -42,6 +45,8 @@ const MoviePage = () => {
   return (
     <div className={classes.pageCanvas} key={movieId}>
       <UpperMoviePage 
+      status={data.account_states}
+      movieId={movieId ?? ''}
       rating={data.vote_average}
       voteCount={data.vote_count}
       backgroundImage={getBackgroundImage()}

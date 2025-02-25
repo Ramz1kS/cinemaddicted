@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './MovieLink.module.css'
 import { Link } from 'react-router-dom';
+import RatingNumber from '../RatingNumber/RatingNumber';
 
 interface MovieLinkProps {
   name: string;
@@ -20,7 +21,7 @@ const MovieLink: React.FC<MovieLinkProps> = ({name, rating, categories, year, im
       className={classes.poster}></div>
       <div className={classes.nameAndRating}>
         <p>{name}</p>
-        <p className={classes.rating}>{rating}/10</p>
+        <p className={classes.rating}><RatingNumber number={rating}></RatingNumber>/10</p>
       </div>
       <div className={classes.categoriesYear}>
         <h4>{categories[0] + ', ' + categories[1]}</h4>

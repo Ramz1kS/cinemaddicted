@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './MovieList.module.css'
 import MovieLink from '../MovieLink/MovieLink'
 
+// на данный момент не используется
+
 const MovieList = () => {
   const movies = [{
     name: "Snatch",

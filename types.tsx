@@ -1,3 +1,9 @@
+// хз
+export interface BasicAnswer {
+  status_code: number;
+  status_message: string;
+}
+
 // Объекты под аутентификацию
 
 export interface RequestToken {
@@ -93,6 +99,14 @@ export interface ReviewData {
   total_results: number;
 }
 
+export interface AccountStates {
+  favorite: boolean;
+  watchlist: boolean;
+  rated: {
+    value: number;
+  }
+}
+
 // Кинч
 export interface Film {
   adult: boolean;
@@ -112,6 +126,7 @@ export interface Film {
   images: Images;
   reviews: ReviewData;
   similar: FilmsArrayData;
+  account_states: AccountStates;
 }
 
 // Объекты для фильмов, связанных с пользователем

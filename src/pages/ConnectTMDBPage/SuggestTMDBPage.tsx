@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { RequestToken, SessionIdData } from '../../../types'
 import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
+import { motion } from 'motion/react'
 
 const SuggestTMDBPage = () => {
   const apiKey = import.meta.env.VITE_API_READ
@@ -17,6 +18,7 @@ const SuggestTMDBPage = () => {
     if (sessionId != 'none')
       navigate('/account/')
   }, [])
+  // TODO: переделать под useData
   async function authorize() {
     if (!canStartAuthorization)
       return
@@ -78,16 +80,23 @@ const SuggestTMDBPage = () => {
       onClick={() => navigate('/list/')}
       className={classes.goBackButton}>go back to movie list</p>
     <div className={classes.pageCanvas}>
-      <h2 className={classes.question}>Want use all the features?</h2>
-      <p>You should connect your <span className={classes.blueText}>TheMovieDataBase</span> account!</p>
-      <p 
-      onClick={() => handleClick()}
-      style={{opacity: canStartAuthorization ? 1 : 0.5}}
-      className={classes.linkToAuth}>click me to do so!</p>
+      <motion.h2 
+      initial={{y: -50, opacity: 0}}
+      animate={{y: 0, opacity: 1}}
+      className={classes.question}>Want use all the features?</motion.h2>
+      <motion.div
+      initial={{y: 50, opacity: 0}}
+      animate={{y: 0, opacity: 1}}
+      transition={{delay: 0.2}}>
+        <p>You should connect your <span className={classes.blueText}>TheMovieDataBase</span> account!</p>
+        <p 
+        onClick={() => handleClick()}
+        style={{opacity: canStartAuthorization ? 1 : 0.5}}
+        className={classes.linkToAuth}>click me to do so!</p>
+      </motion.div>
       <p 
       style={{opacity: isError ? 1 : 0}}
       className={classes.errorMsg}>Unfortunately, we are unable to connect to TMDB. I'll add some details later lol</p>
-      {/* TODO: REMOVE, ITS A TEST */}
     </div>
     </>
   )

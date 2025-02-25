@@ -29,9 +29,11 @@ const NavTabLeft = () => {
         <h3
         className={classes.menuElement} 
         onClick={() => setMenuNeeded(false)}>Hide menu</h3>
-        <Link to='/list'>
+        
+        { /* TODO: ДОБАВИТЬ ПОСЛЕ РЕАЛИЗАЦИИ ПОИСКА
+         <Link to='/list'>
           <h3
-          className={classes.menuElement}>Go to wishlist</h3></Link>
+          className={classes.menuElement}>Discover</h3></Link> */}
         <Link to={ sessionId == 'none' ? '/gototmdb' : '/account'}>
           <h3
           className={classes.menuElement}>{ sessionId == 'none' ? "Sign in" : "Account"}</h3></Link>

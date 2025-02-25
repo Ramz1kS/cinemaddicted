@@ -6,7 +6,7 @@ export function useServer<T>() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState<T | null>(null)
-  async function useData(url: string, method: 'GET' | 'POST' | 'DELETE', params: {}, callback?: () => void) {
+  async function useData(url: string, method: 'GET' | 'POST' | 'DELETE', params: {}, callback?: (val?: T) => void) {
     setIsLoading(true)
     setIsError(false)
     try {
@@ -20,6 +20,7 @@ export function useServer<T>() {
           Authorization: `Bearer ${apiKey}`
         }
       })
+      console.log(response.request.responseURL)
       console.log(response.data)
       setData(response.data)
       if (callback)

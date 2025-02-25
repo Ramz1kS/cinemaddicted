@@ -1,0 +1,9 @@
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.clickMe {
+  cursor: pointer;
+}

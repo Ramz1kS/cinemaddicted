@@ -4,13 +4,11 @@ import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
 import { useServer } from '../../hooks/useServer'
 import { useNavigate } from 'react-router-dom'
 import { AccountMainData } from '../../../types'
-import { motion } from 'motion/react'
 import LogOutButton from '../../components/LogOutButton/LogOutButton'
 import LoadingPage from '../LoadingPage/LoadingPage'
 import ErrorPage from '../ErrorPage/ErrorPage'
 import NavTabUpper from '../../components/NavTabUpper/NavTabUpper'
-import MovieDescription from '../../components/MovieDescription/MovieDescription'
-import FavoritesPage from '../FavoritesPage/FavoritesPage'
+import UserMoviesList from '../../components/UserMoviesList/UserMoviesList'
 import ButtonChoiceContainer from '../../components/ButtonChoiceContainer/ButtonChoiceContainer'
 
 const MyAccount = () => {
@@ -34,9 +32,9 @@ const MyAccount = () => {
   const selectionHandler = () => {
     switch (currSelection) {
       case "favorites":
-        return (<FavoritesPage userId={data?.id}></FavoritesPage>)
+        return (<UserMoviesList type={"favorite"} userId={data?.id}></UserMoviesList>)
       default:
-        return (<div>brobrobroskiii</div>)
+        return (<UserMoviesList type={"watchlist"} userId={data?.id}></UserMoviesList>)
     }
   }
 
