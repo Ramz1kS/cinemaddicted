@@ -1,0 +1,26 @@
+.header {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.commentsList {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+
+.listContainer {
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.loadMore {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.greyText {
+  color: rgb(185, 185, 185)
+}

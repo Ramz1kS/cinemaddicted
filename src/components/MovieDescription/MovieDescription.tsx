@@ -2,14 +2,14 @@ import React from 'react'
 import classes from './MovieDescription.module.css'
 
 interface MovieDescriptionProps {
-  description: string
+  children: React.ReactNode
 }
 
-const MovieDescription: React.FC<MovieDescriptionProps> = ({description}) => {
+const MovieDescription: React.FC<MovieDescriptionProps> = ({children}) => {
   return (
     <div className={classes.descriptionContainer}>
       <h1 className={classes.sectionName}>DESCRIPTION</h1>
-      <p className={classes.descriptionText}>{description}</p>
+      <p className={classes.descriptionText}>{children}</p>
     </div>
   )
 }

@@ -1,0 +1,24 @@
+.sectionName {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.descriptionContainer {
+  margin-bottom: 30px;
+}
+
+.buttonContainer {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.imageContainer {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+  overflow-x: auto;
+  height: auto;
+  padding: 10px;
+  border: 1px solid white;
+}
+

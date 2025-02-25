@@ -1,52 +1,22 @@
-import React from 'react'
+import React, { FC } from 'react'
 import classes from './ActorsList.module.css'
-import ActorImage from '../../assets/images/test/actor.png'
 import ActorContainer from './ActorContainer'
+import { CastMember } from '../../../types'
+import PlaceholderPhoto from '../../assets/images/ActorPlaceholder.png'
 
-const ActorsList = () => {
-  const actors = [
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-    {
-      name: "Jason Statham",
-      image: ActorImage
-    }, 
-  ]
+interface ActorsListProps {
+  cast: CastMember[]
+}
+
+const ActorsList: FC<ActorsListProps> = ({cast}) => {
   return (
     <div className={classes.actorsListContainer}>
       <h1 className={classes.sectionName}>CAST</h1>
       <div className={classes.actorsList}>
-        {actors.map((item, index) => <ActorContainer key={index} name={item.name} image={item.image}></ActorContainer>)}
+        {cast.map((item) => <ActorContainer key={item.id} 
+        name={item.name} 
+        character={item.character}
+        image={!item.profile_path ? PlaceholderPhoto : `https://media.themoviedb.org/t/p/w276_and_h350_face/${item.profile_path}`}></ActorContainer>)}
       </div>
     </div>
   )

@@ -1,0 +1,51 @@
+.darkBackground {
+  background-color: rgba(0, 0, 0, 0.729);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  z-index: 13;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.ratingContainer {
+  padding: 20px;
+  background-color: rgb(53, 53, 53);
+  display: flex;
+  gap: 10px;
+  width: 500px;
+  min-height: 400px;
+  flex-direction: column;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingInput {
+  outline: none;
+  display: inline;
+  background-color: none;
+  background: none;
+  border: none;
+  text-align: right;
+  width: 3ch;
+  border-bottom: 1px solid white;
+  font-size: 24px;
+}
+
+.inlineTen {
+  display: inline-block;
+}
+
+.clickMe {
+  cursor: pointer;
+  border-bottom: 1px solid white;
+}
+
+.errorMsg {
+  text-align: center;
+  color: rgb(255, 67, 67)
+}

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import classes from './NavTabLeft.module.css'
+import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
 
 const NavTabLeft = () => {
   const [menuNeeded, setMenuNeeded] = useState(false)
+  const sessionId = useContext(authContext).sessionId
   return (
     <>
     <motion.div
@@ -27,12 +29,14 @@ const NavTabLeft = () => {
         <h3
         className={classes.menuElement} 
         onClick={() => setMenuNeeded(false)}>Hide menu</h3>
-        <Link to='/list'>
+        
+        { /* TODO: ДОБАВИТЬ ПОСЛЕ РЕАЛИЗАЦИИ ПОИСКА
+         <Link to='/list'>
           <h3
-          className={classes.menuElement}>Go to wishlist</h3></Link>
-        <Link to='/login'>
+          className={classes.menuElement}>Discover</h3></Link> */}
+        <Link to={ sessionId == 'none' ? '/gototmdb' : '/account'}>
           <h3
-          className={classes.menuElement}>Sign in</h3></Link>
+          className={classes.menuElement}>{ sessionId == 'none' ? "Sign in" : "Account"}</h3></Link>
       </motion.div> 
       : null}
     </AnimatePresence>

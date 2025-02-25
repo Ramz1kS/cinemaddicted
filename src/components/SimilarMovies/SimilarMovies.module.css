@@ -1,0 +1,23 @@
+.moviesListContainer {
+  margin-bottom: 30px;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.sectionName {
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.moviesList {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+}
+
+.greyText {
+  color: rgb(185, 185, 185)
+}

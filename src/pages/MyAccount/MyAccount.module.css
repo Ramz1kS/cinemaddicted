@@ -1,0 +1,37 @@
+.pageCanvas {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(22, 22, 22);
+}
+
+.avatar {
+  width: 240px;
+  height: 240px;
+}
+
+.username {
+  font-weight: 500;
+}
+
+.name {
+  color: #9F9F9F;
+  font-weight: 400;
+}
+
+.basicInfoPage {
+  padding-top: 120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.marginDiv {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}

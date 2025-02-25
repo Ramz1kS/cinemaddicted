@@ -1,0 +1,26 @@
+.image {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  background-size: cover;
+  background-position: 50% 25%;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 500px;
+}
+
+.container {
+  position: relative;
+}
+
+.clickMe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.618);
+  position: absolute;
+  top: 0;
+}
