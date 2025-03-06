@@ -6,7 +6,7 @@ A website that allows you to do... um... whatever TheMovieDatabase API lets you 
 Small update
 - Pagination in account lists, might be buggy
 - Rated movies lists
-- Ratings are not removable
+- Ratings are now removable
 
 keep flowers send a hunnid thousand!
 
