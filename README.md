@@ -31,6 +31,7 @@ Available paths:
 - Non-functional movie search list (path '/list/')
 - Account page (path '/account/')
 - Authorization page (paths '/gototmdb' and 'successtmdb')
+- Temp search page (path '/tempsearch')
 
 ## commit 1
 Nothing really works, API isn't used yet, all there is is some non-functional unfinished pages, which are:
