@@ -34,9 +34,9 @@ const MyAccount = () => {
     switch (currSelection) {
       case "favorites":
         return (<UserMoviesList type={"favorite"} userId={data?.id}></UserMoviesList>)
-      case "wishlist":
+      case "watchlist":
         return (<UserMoviesList type={"watchlist"} userId={data?.id}></UserMoviesList>)
-      case "reviews":
+      case "rated":
         return (<RatedList></RatedList>)
       default:
         return (<></>)
