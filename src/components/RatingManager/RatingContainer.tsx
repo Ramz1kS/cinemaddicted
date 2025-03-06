@@ -9,14 +9,41 @@ interface RatingContainerProps {
   isNeeded: boolean;
   setIsNeeded: (val: boolean) => void;
   setDisplayRating: (val: number) => void;
+  rating: number;
   movieId: string;
   sessionId: string;
 }
 
-const RatingContainer: React.FC<RatingContainerProps> = ({isNeeded, setIsNeeded, setDisplayRating, movieId, sessionId}) => {
+const RatingContainer: React.FC<RatingContainerProps> = ({isNeeded, setIsNeeded, setDisplayRating, movieId, sessionId, rating}) => {
   const [userRating, setUserRating] = useState(0)
   const [errorMsg, setErrMsg] = useState('none')
   const { isError, useData } = useServer<BasicAnswer>()
+
+  const rateFilm = () => {
+    if (userRating <= 0) 
+      setErrMsg("You must really hate this movie! Unfortunately, rating must be bigger than zero :(")
+    else if (userRating > 10) 
+      setErrMsg("Seems like you really love it. But your rating can be 10 maximum :(") 
+    else {
+      useData(`https://api.themoviedb.org/3/movie/${movieId}/rating`, "POST", {
+        session_id: sessionId,
+        value: userRating
+      }, () => {
+        setDisplayRating(userRating)
+        setIsNeeded(false);
+      });
+    }
+  }
+
+  const removeRating = () => {
+    useData(`https://api.themoviedb.org/3/movie/${movieId}/rating`, "DELETE", {
+      session_id: sessionId,
+    }, () => {
+      setDisplayRating(0)
+      setIsNeeded(false);
+    })
+  }
+
   useEffect(() => {
   if (isError)
     setErrMsg("Unfortunately, we couldn't update the rating")
@@ -50,22 +77,12 @@ const RatingContainer: React.FC<RatingContainerProps> = ({isNeeded, setIsNeeded,
           animate={{opacity: errorMsg == "none" ? 0 : 1 }}
           className={classes.errorMsg}>{errorMsg}</motion.h3>
           <p 
-          onClick={() => {
-            if (userRating <= 0) 
-              setErrMsg("You must really hate this movie! Unfortunately, rating must be bigger than zero :(")
-            else if (userRating > 10) 
-              setErrMsg("Seems like you really love it. But your rating can be 10 maximum :(") 
-            else {
-              useData(`https://api.themoviedb.org/3/movie/${movieId}/rating`, "POST", {
-                session_id: sessionId,
-                value: userRating
-              }, () => {
-                setDisplayRating(userRating)
-                setIsNeeded(false);
-              });
-            }
-          }}
+          onClick={rateFilm}
           className={classes.clickMe}>rate</p>
+          { rating ? <p className={classes.clickMe}
+          onClick={removeRating}>
+            delete rating
+          </p> : <></>}
         </div>
       </motion.div>
        : null}

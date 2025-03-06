@@ -1,0 +1,44 @@
+.clickMe {
+  color: #D9D9D9;
+  cursor: pointer;
+}
+
+.clickMe:hover {
+  border-bottom: #D9D9D9 solid 1px;
+}
+
+.paginator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.switchByButtons {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.switchByInput {
+  display: flex;
+  gap: 5px;
+}
+
+.input {
+  background-color: none;
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+  width: 3ch;
+  text-align: right;
+  font-size: 24px;
+  border-bottom: 1px white solid;
+}
+
+.errorMsg {
+  color: rgb(255, 44, 44);
+}

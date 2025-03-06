@@ -10,6 +10,7 @@ import ErrorPage from '../ErrorPage/ErrorPage'
 import NavTabUpper from '../../components/NavTabUpper/NavTabUpper'
 import UserMoviesList from '../../components/UserMoviesList/UserMoviesList'
 import ButtonChoiceContainer from '../../components/ButtonChoiceContainer/ButtonChoiceContainer'
+import RatedList from '../../components/RatedList/RatedList'
 
 const MyAccount = () => {
   // Переменные под получение данных
@@ -33,9 +34,13 @@ const MyAccount = () => {
     switch (currSelection) {
       case "favorites":
         return (<UserMoviesList type={"favorite"} userId={data?.id}></UserMoviesList>)
-      default:
+      case "wishlist":
         return (<UserMoviesList type={"watchlist"} userId={data?.id}></UserMoviesList>)
-    }
+      case "reviews":
+        return (<RatedList></RatedList>)
+      default:
+        return (<></>)
+      }
   }
 
   if (isLoading && !isError) {
@@ -44,7 +49,7 @@ const MyAccount = () => {
     return (<ErrorPage isPage={true}></ErrorPage>)
   }
   return (
-    <div className={classes.pageCanvas}>
+    <div className={classes.myAccountCanvas}>
       <NavTabUpper name='my account'>
         <LogOutButton></LogOutButton>
       </NavTabUpper>

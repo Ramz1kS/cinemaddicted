@@ -2,6 +2,14 @@
 
 A website that allows you to do... um... whatever TheMovieDatabase API lets you to do, I don't know yet. The idea is to let user add movies to wishlist, maybe write and read reviews too. We'll see
 
+## commit 3
+Small update
+- Pagination in account lists, might be buggy
+- Rated movies lists
+- Ratings are not removable
+
+keep flowers send a hunnid thousand!
+
 ## commit 2
 Big update! So
 - TMDB API is now put to use
@@ -31,11 +39,9 @@ Nothing really works, API isn't used yet, all there is is some non-functional un
 - Register and login pages (paths '/register/' and '/login')
 
 ## What's next?
-- Add "remove rating" option
-- Add pagination to movie lists
-- Add "rated movies" list
 - Make actually working "discover movies" page
 - Figure out how to do TV pages with less codes bruhhhh
+- Add more info on error pages
 - Code cleanup
 - Don't die
 

@@ -1,0 +1,19 @@
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 230px;
+  min-height: 375px;
+}
+
+.movieImage {
+  width: 230px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: none;
+  height: 350px;
+}
+
+.infoDiv {
+  width: 100%;
+}

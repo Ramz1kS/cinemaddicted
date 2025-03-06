@@ -115,6 +115,7 @@ export interface Film {
   id: number;
   title: string;
   release_date: string;
+  rating: number;
   poster_path: string;
   vote_average: number;
   vote_count: number;

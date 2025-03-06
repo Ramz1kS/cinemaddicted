@@ -1,7 +1,6 @@
-.pageCanvas {
+.myAccountCanvas {
   width: 100%;
   min-height: 100vh;
-  padding-bottom: 65px;
   display: flex;
   flex-direction: column;
   align-items: center;

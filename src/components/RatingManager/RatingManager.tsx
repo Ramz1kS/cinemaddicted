@@ -29,6 +29,7 @@ const RatingManager: FC<RatingManagerProps> = ({sessionId, movieId, rating}) => 
       onClick={() => setBoxNeeded(true)}
       className={classes.clickMe}>{ displayRating ? 'change' : 'rate'}</h4>
       <RatingContainer 
+      rating={displayRating}
       sessionId={sessionId}
       movieId={movieId}
       setDisplayRating={setDisplayRating}
