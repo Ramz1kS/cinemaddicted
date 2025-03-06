@@ -9,8 +9,6 @@ const TestPage = () => {
   const apiUrl = import.meta.env.VITE_API_READ;
   const [requestToken, setRequestToken] = useState('')
   const [sessionId, setSessionId] = useState('')
-  console.log(import.meta.env);
-  console.log(apiUrl)
 
   async function fetchRequestToken(url: string) {
     try {
@@ -35,7 +33,6 @@ const TestPage = () => {
           Authorization: `Bearer ${apiUrl}`
         }
       })
-      console.log(response.data)
     }
     catch (e) {
       console.error(e)
@@ -45,7 +42,6 @@ const TestPage = () => {
   // TODO: переделать под проверку на существование реквест токена эмммм
   async function authenticate(url: string) {
     try {
-      console.log(`Current url: ${url}`)
       window.open(url, '_blank')
     }
     catch (e) {
@@ -66,7 +62,6 @@ const TestPage = () => {
           Authorization: `Bearer ${apiUrl}`
         }
       })
-      console.log(response.data)
       setSessionId(response.data.session_id)
     }
     catch (e) {

@@ -7,6 +7,7 @@ Small update
 - Pagination in account lists, might be buggy
 - Rated movies lists
 - Ratings are now removable
+- Temp search page (uses id input lol)
 
 keep flowers send a hunnid thousand!
 

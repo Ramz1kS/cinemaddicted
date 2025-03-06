@@ -1,0 +1,28 @@
+.tempSearchCanvas {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.idInput {
+  background: none;
+  outline: none;
+  font-size: 24px;
+  color: white;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.clickMe {
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
+
+.examples * {
+  color: rgb(165, 165, 165)
+}

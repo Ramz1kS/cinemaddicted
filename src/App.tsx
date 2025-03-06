@@ -10,6 +10,7 @@ import SuggestTMDBPage from './pages/ConnectTMDBPage/SuggestTMDBPage'
 import AuthContextProvider from './contexts/AuthContext/AuthContextProvider'
 import SuccessfulTMDBPage from './pages/ConnectTMDBPage/SuccessfulTMDBPage'
 import MyAccount from './pages/MyAccount/MyAccount'
+import TempSearchPage from './pages/TempSearchPage/TempSearchPage'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/successtmdb/' element={<SuccessfulTMDBPage></SuccessfulTMDBPage>}></Route>
         <Route path='/account/' element={<MyAccount></MyAccount>}></Route>
         <Route path='/testing/' element={<TestPage></TestPage>}></Route>
+        <Route path='/tempsearch/' element={<TempSearchPage></TempSearchPage>}></Route>
         <Route path='*' element={<DontExistPage></DontExistPage>}></Route>
       </Routes>
     </BrowserRouter>

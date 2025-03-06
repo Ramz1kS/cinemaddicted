@@ -38,8 +38,7 @@ const SuccessfulTMDBPage = () => {
       <>
         <h3 className={classes.yay}>Success!</h3>
         <p>Thank you! You're logged in!</p>
-        <p>ok so i dont have a functioning list page rn so you gotta type /movie/ and then movie id idk man just type some random stuff that will work</p>
-        <p>for example use /movie/107, it's a Snatch movie</p>
+        <Link to='/tempsearch/' className={classes.link}><p className={classes.clickMe}>search by id (temp search)</p></Link>
         <Link to='/account/' className={classes.link}><p className={classes.clickMe}>go to account</p></Link>
       </> }
     </motion.div>
