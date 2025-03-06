@@ -29,7 +29,7 @@ const MyAccount = () => {
 
   // Переменные для самой страницы
   const [currSelection, setCurrSelection] = useState<string>('favorites')
-  const selectionVariants = ['favorites', 'wishlist', 'reviews']
+  const selectionVariants = ['favorites', 'watchlist', 'rated']
   const selectionHandler = () => {
     switch (currSelection) {
       case "favorites":
