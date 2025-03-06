@@ -14,7 +14,6 @@ const SuggestTMDBPage = () => {
   const [requestToken, setRequestToken] = useState<string>('')
   const navigate = useNavigate()
   useEffect(() => {
-    console.log(sessionId)
     if (sessionId != 'none')
       navigate('/account/')
   }, [])

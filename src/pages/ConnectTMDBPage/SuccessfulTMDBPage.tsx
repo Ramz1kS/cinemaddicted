@@ -16,7 +16,6 @@ const SuccessfulTMDBPage = () => {
   useEffect(() => {
     if (requestToken == 'none' || !requestToken) 
       navigate('/gototmdb/')
-    console.log(sessionId)
     if (sessionId != 'none')
       navigate('/account/')
     useData('https://api.themoviedb.org/3/authentication/session/new', "POST", {

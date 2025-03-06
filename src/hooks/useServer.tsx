@@ -20,14 +20,13 @@ export function useServer<T>() {
           Authorization: `Bearer ${apiKey}`
         }
       })
-      console.log(response.request.responseURL)
-      console.log(response.data)
+      // console.log(response.data)
       setData(response.data)
       if (callback)
         callback()
     }
     catch (e) {
-      console.log(e)
+      // console.log(e)
       setIsError(true)
     }
     finally {

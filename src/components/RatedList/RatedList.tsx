@@ -30,7 +30,6 @@ const RatedList = () => {
     return <ErrorPage isPage={false}></ErrorPage>
   }
   if (data) {
-    console.log(data) 
   return (
     <div className={classes.ratedListContainer}>
       <div className={classes.list}>
