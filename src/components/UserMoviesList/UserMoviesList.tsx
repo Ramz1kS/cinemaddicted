@@ -5,8 +5,7 @@ import { authContext } from '../../contexts/AuthContext/AuthContextProvider';
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import { FilmsArrayData } from '../../../types';
-import MovieLink from '../MovieLink/MovieLink';
-import Paginator from '../Paginator/Paginator';
+import MovieList from '../MovieList/MovieList';
 
 interface FavoritesPageProps {
   userId: number | undefined;
@@ -36,20 +35,7 @@ const UserMoviesList: FC<FavoritesPageProps> = ({userId, type}) => {
   }
   if (data)
   return (
-    <div className={classes.movieLinkListContainer}>
-      <div className={classes.movieLinkList}>
-        { data.results.map((item) => 
-        <MovieLink 
-        imageLink={item.poster_path}
-        movieId={item.id}
-        name={item.title}
-        key={item.id}
-        rating={item.vote_average}
-        categories={['idk', 'idk']}
-        year={item.release_date}></MovieLink>) }
-      </div>
-      <Paginator pageNum={pageNum} setPageNum={setPageNum} totalPages={data?.total_pages}></Paginator>
-    </div>
+    <MovieList data={data.results} pageNum={pageNum} setPageNum={setPageNum} totalPages={data.total_pages}></MovieList>
   )
 }
 

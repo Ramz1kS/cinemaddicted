@@ -8,10 +8,11 @@ import LoadingPage from '../LoadingPage/LoadingPage'
 import ErrorPage from '../ErrorPage/ErrorPage'
 import { useServer } from '../../hooks/useServer'
 import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
-import { Film, FilmsArrayData } from '../../../types'
+import { Film, FilmsArrayData, Genre } from '../../../types'
 import { getRandomInRange } from '../../hooks/useRandom'
 import ReviewsList from '../../components/Reviews/ReviewsList'
 import SimilarMovies from '../../components/SimilarMovies/SimilarMovies'
+import { dataContext } from '../../contexts/DataContext/DataContextProvider'
 
 const MoviePage = () => {
   const { isLoading, isError, data, useData } = useServer<Film>()
@@ -23,6 +24,17 @@ const MoviePage = () => {
       'accept': 'application/json'
     })
   }, [movieId])
+
+  const makeGenresString = (genres: Genre[]) => {
+      var result = ""
+      for (var i = 0; i < 2; i++) {
+        result += genres[i].name
+        if (i != 1)
+          result += ", "
+      }
+      return result.toLowerCase()
+  }
+
   const getBackgroundImage = () => {
     if (!data)
       return ''
@@ -40,6 +52,7 @@ const MoviePage = () => {
   } else if (isError) {
     return (<ErrorPage isPage={true}></ErrorPage>)
   } 
+
   if (!data)
     return
   return (
@@ -52,6 +65,7 @@ const MoviePage = () => {
       backgroundImage={getBackgroundImage()}
       runtime={data.runtime}
       movieName={data.title}
+      genres={makeGenresString(data.genres)}
       directors={data.credits.crew.filter((item) => item.job == "Director") ?? []}
       posterLink={data.poster_path}
       countries={data.production_countries}

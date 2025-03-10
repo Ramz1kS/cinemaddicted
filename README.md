@@ -2,6 +2,12 @@
 
 A website that allows you to do... um... whatever TheMovieDatabase API lets you to do, I don't know yet. The idea is to let user add movies to wishlist, maybe write and read reviews too. We'll see
 
+## commit 4 (temp)
+- added correct genre names
+- discover page with working search
+- added "no image found" in case if movie poster doesn't exist
+- replaces seal pic (rip)
+
 ## commit 3
 Small update
 - Pagination in account lists, might be buggy

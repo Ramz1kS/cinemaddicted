@@ -1,13 +1,48 @@
 import React, { useState } from 'react'
 import classes from './SearchBar.module.css'
 import { motion } from 'motion/react'
+import { SearchParamsType } from '../../../types';
 
-const SearchBar = () => {
+interface SearchBarProps {
+  setSearchText: (val: string) => void,
+  searchText: string;
+  setSearchParams: (value: SearchParamsType | ((prevVar: SearchParamsType) => SearchParamsType)) => void;
+  setPageNum: (val: number) => void
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSearchParams, setPageNum}) => {
   const [searchBarFocused, setSearchBarFocused] = useState(false)
-  const [searchText, setSearchText] = useState('')
   const searchTextChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value)
   }
+  const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (searchText != '') {
+      setPageNum(1)
+      setSearchParams({
+        mainLink: 'https://api.themoviedb.org/3/search/movie',
+        params: {
+          include_adult: false,
+          include_video: false,
+          language: "en-US",
+          sort_by: 'popularity.desc',
+          query: searchText
+        }
+      })
+    } else {
+      setPageNum(1)
+      setSearchParams({
+        mainLink: 'https://api.themoviedb.org/3/discover/movie',
+        params: {
+          include_adult: false,
+          include_video: false,
+          language: "en-US",
+          sort_by: 'popularity.desc',
+          query: searchText
+        }
+      })
+    }
+  }
+
   return (
     <motion.div 
     initial={{opacity: 0}}
@@ -26,13 +61,20 @@ const SearchBar = () => {
       onChange={searchTextChangeHandler}
       ></motion.input>
       <div 
+      style={{
+        opacity: searchText == '' ? 1 : 0.4,
+        cursor: searchText == '' ? 'default' : 'not-allowed'
+      }}
       className={classes.searchSettingsContainer}>
         <p>type</p>
         <p>genre</p>
         <p>rating</p>
         <p>time</p>
       </div>
-      <button className={classes.searchButton}><h3>search</h3></button>
+      <button className={classes.searchButton}
+      onClick={handleSearch}
+      ><h3>search</h3>
+      </button>
     </motion.div>
   )
 }

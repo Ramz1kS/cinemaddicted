@@ -11,9 +11,11 @@ import AuthContextProvider from './contexts/AuthContext/AuthContextProvider'
 import SuccessfulTMDBPage from './pages/ConnectTMDBPage/SuccessfulTMDBPage'
 import MyAccount from './pages/MyAccount/MyAccount'
 import TempSearchPage from './pages/TempSearchPage/TempSearchPage'
+import DataContextProvider from './contexts/DataContext/DataContextProvider'
 
 function App() {
   return (
+    <DataContextProvider>
     <AuthContextProvider>
     <BrowserRouter>
       <Routes>
@@ -29,6 +31,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </AuthContextProvider>
+    </DataContextProvider>
   )
 }
 
