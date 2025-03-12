@@ -9,7 +9,7 @@ const StartingPage = () => {
       <div className={classes.sideBlackFade}>
         <h1 className={classes.title}>CINEMADDICTED</h1>
         <p className={classes.smaller}>need to find a movie to watch? you’re on a right website!</p>
-        <Link to={'/gototmdb/'}><h3 className={classes.link}>get started</h3></Link>
+        <Link to={'/list/'}><h3 className={classes.link}>get started</h3></Link>
         <img className={classes.tmdbLogo} src={TMDBLogo}></img>
       </div>
     </div>

@@ -45,17 +45,12 @@ const MovieListManager: React.FC<MovieListManagerProps> = ({favorite, watchlist,
           [category]: flag,
         }),
       });
-
       const data = await response.json();
-      console.log('API Response:', data);
-
       if (response.ok) {
         stateFunc();
       } else {
-        console.error('API Error:', data);
       }
     } catch (error) {
-      console.error('Fetch error:', error);
     }
   }
   if (userId == 'none') {

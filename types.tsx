@@ -152,3 +152,19 @@ export interface Genre {
   id: number,
   name: string
 }
+
+export interface GenreState {
+  old: number[],
+  new: number[]
+}
+
+export interface DateRange {
+  min: number,
+  max: number
+}
+
+export interface DateState {
+  old: DateRange,
+  new: DateRange,
+  needed: boolean
+}

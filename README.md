@@ -6,7 +6,9 @@ A website that allows you to do... um... whatever TheMovieDatabase API lets you 
 - added correct genre names
 - discover page with working search
 - added "no image found" in case if movie poster doesn't exist
-- replaces seal pic (rip)
+- replaced seal pic (rip)
+- functional genre search
+- functional year search
 
 ## commit 3
 Small update

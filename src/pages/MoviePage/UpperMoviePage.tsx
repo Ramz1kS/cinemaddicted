@@ -77,7 +77,9 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
           animate={{opacity: 1}}
           transition={{delay: 0.4, duration: 0.4}}>
             <h4 className={classes.genre}>rated <RatingNumber number={rating}></RatingNumber> ({voteCount})</h4>
-            <RatingManager sessionId={sessionId} movieId={movieId} rating={status.rated.value}></RatingManager>
+            { sessionId !=  'none' ?
+             <RatingManager sessionId={sessionId} movieId={movieId} rating={status.rated.value}></RatingManager>
+            : <></>}
             <h4 className={classes.genre}>{genres}</h4>
             <h4 className={classes.generalInfo}>directed by {directors.map((item, index) => <span key={index}>{item.name + (index != directors.length - 1? ', ' : '')}</span>)}</h4>
             <h4 className={classes.generalInfo}>produced by {companies.map((item, index) => <span key={index}>{item.name + (index != companies.length - 1? ', ' : '')}</span>)}</h4>

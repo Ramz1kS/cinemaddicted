@@ -30,14 +30,14 @@ const MoviesListPage = () => {
         ...searchParams.params
       })
   }, [searchParams, pageNum])
-  if (data)
     return (
     <div className={classes.pageCanvas}>
       <NavTabUpper name='search'></NavTabUpper>
       <SearchBar searchText={searchText} setSearchText={setSearchText} setSearchParams={setSearchParams} setPageNum={setPageNum}>
       </SearchBar>
-      { isLoading ? (<LoadingPage isPage={false}></LoadingPage>) : isError ? (<ErrorPage isPage={false}></ErrorPage>) :
-        <MovieList setPageNum={setPageNum} pageNum={pageNum} data={data.results} totalPages={data.total_pages}></MovieList>
+      { isLoading ? (<LoadingPage isPage={false}></LoadingPage>) : isError ? (<ErrorPage isPage={false}></ErrorPage>) : data ?
+        <MovieList setPageNum={setPageNum} pageNum={pageNum} data={data.results} totalPages={data.total_pages}></MovieList> 
+        : <></>
       }
     </div>
   )
