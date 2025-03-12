@@ -168,3 +168,14 @@ export interface DateState {
   new: DateRange,
   needed: boolean
 }
+
+export interface RatingSearchRange {
+  min: number,
+  max: number
+}
+
+export interface RatingSearchState {
+  old: RatingSearchRange,
+  new: RatingSearchRange,
+  needed: boolean
+}

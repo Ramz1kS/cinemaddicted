@@ -21,12 +21,23 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
   })
   const [date, setDate] = useState<DateState>({
     old: {
-      min: 2000,
-      max: 2023
+      min: 0,
+      max: 0
     },
     new: {
       min: 2000,
       max: 2023
+    },
+    needed: false
+  })
+  const [rating, setRating] = useState<DateState>({
+    old: {
+      min: 0,
+      max: 0
+    },
+    new: {
+      min: 1,
+      max: 10
     },
     needed: false
   })
@@ -65,7 +76,9 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
           sort_by: 'popularity.desc',
           with_genres: form_genres(genres.new),
           "primary_release_date.gte": date.needed ? (date.new.min + "-01-01") : "",
-          "primary_release_date.lte": date.needed ? (date.new.max + "-01-01") : ""
+          "primary_release_date.lte": date.needed ? (date.new.max + "-01-01") : "",
+          "vote_average.gte": rating.needed ? rating.new.min : "",
+          "vote_average.lte": rating.needed ? rating.new.max : "",
         }
       })
       setGenres((prev) => {
@@ -75,6 +88,13 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
         }
       })
       setDate((prev) => ({
+        ...prev,
+        old: {
+          min: prev.new.min,
+          max: prev.new.max
+        }
+      }))
+      setRating((prev) => ({
         ...prev,
         old: {
           min: prev.new.min,
@@ -113,7 +133,7 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
       }}
       className={classes.searchSettingsContainer}>
         <SearchSettingGenres setSelected={setGenres} selected={genres}></SearchSettingGenres>
-        <SearchSettingRating></SearchSettingRating>
+        <SearchSettingRating rating={rating} setRating={setRating}></SearchSettingRating>
         <SearchSettingTime date={date} setDate={setDate}></SearchSettingTime>
       </motion.div>
       </AnimatePresence>

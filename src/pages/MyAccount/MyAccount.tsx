@@ -14,7 +14,7 @@ import RatedList from '../../components/RatedList/RatedList'
 
 const MyAccount = () => {
   // Переменные под получение данных
-  const { isLoading, isError, data, useData } = useServer<AccountMainData>()
+  const { isLoading, isError, data, useData, errorReason } = useServer<AccountMainData>()
   const sessionId = useContext(authContext).sessionId
   const validateSession = useContext(authContext).validateSession
   const navigate = useNavigate()
@@ -46,7 +46,7 @@ const MyAccount = () => {
   if (isLoading && !isError) {
     return (<LoadingPage isPage={true}></LoadingPage>)
   } else if (isError) {
-    return (<ErrorPage isPage={true}></ErrorPage>)
+    return (<ErrorPage message={errorReason} isPage={true}></ErrorPage>)
   }
   return (
     <div className={classes.myAccountCanvas}>

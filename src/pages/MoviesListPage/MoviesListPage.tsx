@@ -10,7 +10,7 @@ import ErrorPage from '../ErrorPage/ErrorPage'
 import { SearchParamsType } from '../../../types'
 
 const MoviesListPage = () => {
-  const { isLoading, isError, data, useData } = useServer<FilmsArrayData>()
+  const { isLoading, isError, data, useData, errorReason } = useServer<FilmsArrayData>()
   const [pageNum, setPageNum] = useState(1)
   const [searchText, setSearchText] = useState('')
   const [searchParams, setSearchParams] = useState<SearchParamsType>({
@@ -35,9 +35,11 @@ const MoviesListPage = () => {
       <NavTabUpper name='search'></NavTabUpper>
       <SearchBar searchText={searchText} setSearchText={setSearchText} setSearchParams={setSearchParams} setPageNum={setPageNum}>
       </SearchBar>
-      { isLoading ? (<LoadingPage isPage={false}></LoadingPage>) : isError ? (<ErrorPage isPage={false}></ErrorPage>) : data ?
+      { isLoading ? (<LoadingPage isPage={false}></LoadingPage>) : 
+        isError ? (<ErrorPage isPage={false} message={errorReason}></ErrorPage>) : 
+        data ? data.results.length != 0 ?
         <MovieList setPageNum={setPageNum} pageNum={pageNum} data={data.results} totalPages={data.total_pages}></MovieList> 
-        : <></>
+        : <h3>There are no movies that fit your criterias</h3> : <ErrorPage isPage={false}></ErrorPage>
       }
     </div>
   )

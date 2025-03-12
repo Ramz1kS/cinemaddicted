@@ -8,14 +8,13 @@ import LoadingPage from '../LoadingPage/LoadingPage'
 import ErrorPage from '../ErrorPage/ErrorPage'
 import { useServer } from '../../hooks/useServer'
 import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
-import { Film, FilmsArrayData, Genre } from '../../../types'
+import { Film, Genre } from '../../../types'
 import { getRandomInRange } from '../../hooks/useRandom'
 import ReviewsList from '../../components/Reviews/ReviewsList'
 import SimilarMovies from '../../components/SimilarMovies/SimilarMovies'
-import { dataContext } from '../../contexts/DataContext/DataContextProvider'
 
 const MoviePage = () => {
-  const { isLoading, isError, data, useData } = useServer<Film>()
+  const { isLoading, isError, data, useData, errorReason } = useServer<Film>()
   const sessionid = useContext(authContext).sessionId
   const { movieId } = useParams()
   useEffect(() => {
@@ -50,7 +49,7 @@ const MoviePage = () => {
   if (isLoading && !isError) {
     return (<LoadingPage isPage={true}></LoadingPage>)
   } else if (isError) {
-    return (<ErrorPage isPage={true}></ErrorPage>)
+    return (<ErrorPage message={errorReason} isPage={true}></ErrorPage>)
   } 
 
   if (!data)

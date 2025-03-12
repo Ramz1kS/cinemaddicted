@@ -13,7 +13,7 @@ interface FavoritesPageProps {
 }
 
 const UserMoviesList: FC<FavoritesPageProps> = ({userId, type}) => {
-  const { isError, isLoading, data, useData } = useServer<FilmsArrayData>()
+  const { isError, isLoading, data, useData, errorReason } = useServer<FilmsArrayData>()
   const sessionid = useContext(authContext).sessionId
   const [pageNum, setPageNum] = useState(1)
   useEffect(() => {
@@ -27,7 +27,7 @@ const UserMoviesList: FC<FavoritesPageProps> = ({userId, type}) => {
   if (isLoading && !isError) {
     return (<LoadingPage isPage={false}></LoadingPage>)
   } else if (isError) {
-    return (<ErrorPage isPage={false}></ErrorPage>)
+    return (<ErrorPage message={errorReason} isPage={false}></ErrorPage>)
   } else if (!isLoading && data?.total_results == 0) {
     return (<div className={classes.centerer}>
       <h3 className={classes.greyText}>You have no movies in this list yet</h3>

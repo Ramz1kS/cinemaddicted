@@ -12,16 +12,6 @@ interface SearchSettingTimeProps {
 const SearchSettingTime: FC<SearchSettingTimeProps> = ({date, setDate}) => {
   const [minVal, setMinVal] = useState(date.new.min)
   const [maxVal, setMaxVal] = useState(date.new.max)
-
-  const updateNewDate = (isMin: boolean, val: number) => {
-    setDate((prev) => ({
-      ...prev,
-      new: {
-        min: isMin ? val : prev.new.min,
-        max: !isMin ? val : prev.new.max
-      }
-    }))
-  }
   
   const [errMsg, setErrMsg] = useState("")
 
