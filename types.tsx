@@ -128,6 +128,7 @@ export interface Film {
   reviews: ReviewData;
   similar: FilmsArrayData;
   account_states: AccountStates;
+  genres: Genre[]
 }
 
 // Объекты для фильмов, связанных с пользователем
@@ -136,4 +137,55 @@ export interface FilmsArrayData {
   results: Film[];
   total_pages: number;
   total_results: number;
+}
+
+export interface SearchParamsType {
+  mainLink: string;
+  params: {}
+}
+
+export interface GenreResponse {
+  genres: Genre[]
+}
+
+export interface Genre {
+  id: number,
+  name: string
+}
+
+export interface GenreState {
+  old: number[],
+  new: number[]
+}
+
+export interface DateRange {
+  min: number,
+  max: number
+}
+
+export interface DateState {
+  old: DateRange,
+  new: DateRange,
+  needed: boolean
+}
+
+export interface RatingSearchRange {
+  min: number,
+  max: number
+}
+
+export interface RatingSearchState {
+  old: RatingSearchRange,
+  new: RatingSearchRange,
+  needed: boolean
+}
+
+export interface SortSettings {
+  method: string,
+  order: string
+}
+
+export interface SortState {
+  old: SortSettings;
+  new: SortSettings
 }

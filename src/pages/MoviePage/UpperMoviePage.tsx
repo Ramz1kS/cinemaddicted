@@ -1,13 +1,10 @@
 import React, { FC, useContext, useEffect } from 'react'
 import { motion } from 'motion/react'
 import classes from './UpperMoviePage.module.css'
-import TestBackgroundImage from '../../assets/images/test/moviepageback.png'
-import MoviePoster from '../../assets/images/test/movieposter.png'
-import { AccountStates, CrewMember, Film, productionCompany, productionCountry } from '../../../types'
+import ImageNotFound from '../../assets/images/NoImageFound.png'
+import { AccountStates, CrewMember, productionCompany, productionCountry } from '../../../types'
 import RatingNumber from '../../components/RatingNumber/RatingNumber'
-import { useParams } from 'react-router-dom'
 import { authContext } from '../../contexts/AuthContext/AuthContextProvider'
-import { useServer } from '../../hooks/useServer'
 import MovieListManager from '../../components/MovieListManager/MovieListManager'
 import RatingManager from '../../components/RatingManager/RatingManager'
 
@@ -24,6 +21,7 @@ interface UpperMoviePageProps {
   rating: number;
   status: AccountStates;
   voteCount: number;
+  genres: string
 }
 
 const UpperMoviePage: FC<UpperMoviePageProps> = (
@@ -38,6 +36,7 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
   backgroundImage,
   rating,
   voteCount,
+  genres,
   companies}) => {
     const sessionId = useContext(authContext).sessionId
     return (
@@ -57,7 +56,8 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
         animate={{opacity: 1, x: 0}}
         transition={{duration: 0.6}}
         className={classes.poster} 
-        src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${posterLink}`}></motion.img>
+        src={posterLink ? `https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${posterLink}` 
+        : `${ImageNotFound}`}></motion.img>
         <div className={classes.infoNoPoster}>
           <motion.div 
           initial={{y: -30, opacity: 0}}
@@ -77,8 +77,10 @@ const UpperMoviePage: FC<UpperMoviePageProps> = (
           animate={{opacity: 1}}
           transition={{delay: 0.4, duration: 0.4}}>
             <h4 className={classes.genre}>rated <RatingNumber number={rating}></RatingNumber> ({voteCount})</h4>
-            <RatingManager sessionId={sessionId} movieId={movieId} rating={status.rated.value}></RatingManager>
-            <h4 className={classes.genre}>comedy, crime</h4>
+            { sessionId !=  'none' ?
+             <RatingManager sessionId={sessionId} movieId={movieId} rating={status.rated.value}></RatingManager>
+            : <></>}
+            <h4 className={classes.genre}>{genres}</h4>
             <h4 className={classes.generalInfo}>directed by {directors.map((item, index) => <span key={index}>{item.name + (index != directors.length - 1? ', ' : '')}</span>)}</h4>
             <h4 className={classes.generalInfo}>produced by {companies.map((item, index) => <span key={index}>{item.name + (index != companies.length - 1? ', ' : '')}</span>)}</h4>
             <h4 className={classes.generalInfo}>filmed in {countries.map((item, index) => <span key={index}>{item.name + (index != countries.length - 1? ', ' : '')}</span>)}</h4>

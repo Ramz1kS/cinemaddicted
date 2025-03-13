@@ -38,7 +38,7 @@ const SuccessfulTMDBPage = () => {
       <>
         <h3 className={classes.yay}>Success!</h3>
         <p>Thank you! You're logged in!</p>
-        <Link to='/tempsearch/' className={classes.link}><p className={classes.clickMe}>search by id (temp search)</p></Link>
+        <Link to='/list/' className={classes.link}><p className={classes.clickMe}>discover!</p></Link>
         <Link to='/account/' className={classes.link}><p className={classes.clickMe}>go to account</p></Link>
       </> }
     </motion.div>

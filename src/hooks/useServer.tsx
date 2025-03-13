@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import React, { useState } from 'react'
 
 export function useServer<T>() {
@@ -6,6 +6,7 @@ export function useServer<T>() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState<T | null>(null)
+  const [errorReason, setErrorReason] = useState("")
   async function useData(url: string, method: 'GET' | 'POST' | 'DELETE', params: {}, callback?: (val?: T) => void) {
     setIsLoading(true)
     setIsError(false)
@@ -25,13 +26,15 @@ export function useServer<T>() {
       if (callback)
         callback()
     }
-    catch (e) {
-      // console.log(e)
+    catch (e: any | Error | AxiosError) {
+      if (axios.isAxiosError(e))  {
+        setErrorReason(e.message)
+      }
       setIsError(true)
     }
     finally {
       setIsLoading(false)
     }
   }
-  return { isLoading, isError, data, useData }
+  return { isLoading, isError, data, useData, errorReason }
 }

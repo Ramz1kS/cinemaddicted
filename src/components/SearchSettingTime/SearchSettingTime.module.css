@@ -1,0 +1,24 @@
+.timeMenu {
+  position: absolute;
+  width: 300px;
+  transform: translateX(-50%);
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  flex-direction: column;
+  border: 2px solid #585858;
+  background-color: #212121;
+  border-radius: 8px;
+}
+
+.clickMe {
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid white;
+}
+
+.errMsg {
+  color: rgb(255, 47, 47);
+}

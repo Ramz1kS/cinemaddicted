@@ -10,7 +10,7 @@
 .allMediaContainer {
   position: fixed;
   top: 50%;
-  width: 80%;
+  width: 900px;
   height: 80%;
   overflow-y: auto;
   background-color: rgb(41, 40, 40);
