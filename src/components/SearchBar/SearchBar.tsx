@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import classes from './SearchBar.module.css'
 import { AnimatePresence, motion } from 'motion/react'
-import { DateState, GenreState, SearchParamsType } from '../../../types';
+import { DateState, GenreState, SearchParamsType, SortState } from '../../../types';
 import SearchSettingTime from '../SearchSettingTime/SearchSettingTime';
 import SearchSettingRating from '../SearchSettingRating/SearchSettingRating';
 import SearchSettingGenres from '../SearchSettingGenres/SearchSettingGenres';
+import SearchSettingSort from '../SearchSettingSort/SearchSettingSort';
 
 interface SearchBarProps {
   setSearchText: (val: string) => void,
@@ -41,6 +42,16 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
     },
     needed: false
   })
+  const [sortMethod, setSortMethod] = useState<SortState>({
+    old: {
+      method: "popularity",
+      order: "desc"
+    },
+    new: {
+      method: "popularity",
+      order: "desc"
+    }
+  })
   const form_genres = (selectedGenreIds: number[]) => {
     var result_str = ""
     for (var i = 0; i < selectedGenreIds.length; i++) {
@@ -61,7 +72,7 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
           include_adult: false,
           include_video: false,
           language: "en-US",
-          sort_by: 'popularity.desc',
+          sort_by: sortMethod.new.method + "." + sortMethod.new.order,
           query: searchText
         }
       })
@@ -73,12 +84,12 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
           include_adult: false,
           include_video: false,
           language: "en-US",
-          sort_by: 'popularity.desc',
           with_genres: form_genres(genres.new),
           "primary_release_date.gte": date.needed ? (date.new.min + "-01-01") : "",
           "primary_release_date.lte": date.needed ? (date.new.max + "-01-01") : "",
           "vote_average.gte": rating.needed ? rating.new.min : "",
           "vote_average.lte": rating.needed ? rating.new.max : "",
+          sort_by: sortMethod.new.method + "." + sortMethod.new.order,
         }
       })
       setGenres((prev) => {
@@ -102,6 +113,13 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
         }
       }))
     }
+    setSortMethod((prev) => ({
+      ...prev,
+      old: {
+        method: prev.new.method,
+        order: prev.new.order
+      }
+    }))
   }
 
   return (
@@ -135,6 +153,7 @@ const SearchBar: React.FC<SearchBarProps> = ({setSearchText, searchText, setSear
         <SearchSettingGenres setSelected={setGenres} selected={genres}></SearchSettingGenres>
         <SearchSettingRating rating={rating} setRating={setRating}></SearchSettingRating>
         <SearchSettingTime date={date} setDate={setDate}></SearchSettingTime>
+        <SearchSettingSort sort={sortMethod} setSort={setSortMethod}></SearchSettingSort>
       </motion.div>
       </AnimatePresence>
       <motion.button 

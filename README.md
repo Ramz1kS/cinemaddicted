@@ -1,9 +1,18 @@
 # CINEMADDICTED
 
-A website that allows you to do... um... whatever TheMovieDatabase API lets you to do, I don't know yet. The idea is to let user add movies to wishlist, maybe write and read reviews too. We'll see
+A website that allows you to discover new films to watch! Uses TMDB API (might require VPN for some regions like Russia). You can rate films, add them to your favorites list and watchlist, look at the media related to a film and all other stuff... i guess. Kinda proud of it?
+## Screenshots:
+![movie main page](screenshots/front_movie_page.png)
+![actors](screenshots/actor_info.png)
+![media](screenshots/media.png)
+![reviews](screenshots/reviews.png)
+![rate](screenshots/rate.png)
+![similar](screenshots/similar.png)
+![account](screenshots/account.png)
+![discover](screenshots/discover.png)
 
 ## commit 4
-Here comes the update!
+Here comes the update! Kinda big one
 - Added correct genre names
 - Discover page added with working filtration and search!
 - added "no image found" in case if movie poster doesn't exist
@@ -49,7 +58,6 @@ Nothing really works, API isn't used yet, all there is is some non-functional un
 
 ## What's next?
 - Figure out how to do TV pages with less codes bruhhhh
-- Add "sort" option in discover page
 - Code cleanup
 - Don't die
 

@@ -179,3 +179,13 @@ export interface RatingSearchState {
   new: RatingSearchRange,
   needed: boolean
 }
+
+export interface SortSettings {
+  method: string,
+  order: string
+}
+
+export interface SortState {
+  old: SortSettings;
+  new: SortSettings
+}
